@@ -1,0 +1,47 @@
+{
+  "restaurant": "Pizza House",
+  "menu": [
+    {
+      "category": "pizza",
+      "flavor": "pepperoni",
+      "sizes": ["small", "medium", "large"],
+      "description": "Classic pepperoni pizza with mozzarella cheese. Contains meat.",
+      "price": {"small": 8.99, "medium": 10.99, "large": 12.99},
+      "vegetarian": false
+    },
+    {
+      "category": "pizza",
+      "flavor": "cheese",
+      "sizes": ["small", "medium", "large"],
+      "description": "Cheese pizza with tomato sauce and mozzarella. Vegetarian option.",
+      "price": {"small": 7.99, "medium": 9.99, "large": 11.99},
+      "vegetarian": true
+    },
+    {
+      "category": "pizza",
+      "flavor": "hawaiian",
+      "sizes": ["small", "medium", "large"],
+      "description": "Hawaiian pizza with ham, pineapple, and cheese. Contains meat.",
+      "price": {"small": 9.49, "medium": 11.49, "large": 13.49},
+      "vegetarian": false
+    },
+    {
+      "category": "drink",
+      "name": "soda",
+      "description": "Refreshing soda.",
+      "price": 2.00
+    },
+    {
+      "category": "drink",
+      "name": "water",
+      "description": "Bottled water.",
+      "price": 1.50
+    },
+    {
+      "category": "drink",
+      "name": "wine",
+      "description": "Glass of red or white wine.",
+      "price": 4.50
+    }
+  ]
+}

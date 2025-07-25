@@ -1,0 +1,7 @@
+category,flavor_or_name,sizes,description,price_small,price_medium,price_large,price,vegetarian
+pizza,pepperoni,"small,medium,large","Classic pepperoni pizza with mozzarella cheese. Contains meat.",8.99,10.99,12.99,,False
+pizza,cheese,"small,medium,large","Cheese pizza with tomato sauce and mozzarella. Vegetarian option.",7.99,9.99,11.99,,True
+pizza,hawaiian,"small,medium,large","Hawaiian pizza with ham, pineapple, and cheese. Contains meat.",9.49,11.49,13.49,,False
+drink,soda,,, , , ,2.00,
+drink,water,,, , , ,1.50,
+drink,wine,,, , , ,4.50, 
