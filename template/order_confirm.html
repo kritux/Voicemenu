@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Confirma tu orden{% endblock %}
+
+{% block content %}
+  <h2>Por favor, confirma tu orden</h2>
+  <ul>
+    {% for item in order.items %}
+      <li>
+        {{ item.quantity }} × {{ item.name }}
+      </li>
+    {% endfor %}
+  </ul>
+
+  <form method="post" action="{{ url_for('confirm_order') }}">
+    <input type="hidden" name="order_json" value='{{ order | tojson }}'>
+    <button name="action" value="confirm" class="btn btn-success">Confirmar</button>
+    <button name="action" value="edit"    class="btn btn-warning">Corregir</button>
+  </form>
+{% endblock %} 

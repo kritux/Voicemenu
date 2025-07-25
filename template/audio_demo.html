@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Demo - VoiceMenu</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        .demo-container { max-width: 500px; margin: 40px auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 30px; }
+        .result-block { background: #f8f8f8; border-radius: 8px; padding: 15px; margin-top: 20px; }
+        .result-block pre { background: #e9ecef; border-radius: 5px; padding: 10px; }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h2>Audio Demo</h2>
+        <form id="audio-form">
+            <label for="audio-file">Upload MP3 file:</label><br>
+            <input type="file" id="audio-file" name="file" accept="audio/mp3,audio/mpeg,video/mp4,audio/mp4,.mp3,.mp4" required><br><br>
+            <button type="submit">Transcribe & Parse</button>
+        </form>
+        <div id="transcript-block" class="result-block" style="display:none;">
+            <strong>Transcript:</strong>
+            <pre id="transcript"></pre>
+        </div>
+        <div id="parse-block" class="result-block" style="display:none;">
+            <strong>Parsed Order:</strong>
+            <pre id="parse-result"></pre>
+        </div>
+    </div>
+    <script>
+    document.getElementById('audio-form').onsubmit = async function(e) {
+        e.preventDefault();
+        const fileInput = document.getElementById('audio-file');
+        if (!fileInput.files.length) return;
+        const formData = new FormData();
+        formData.append('file', fileInput.files[0]);
+        // 1. Subir y transcribir
+        const uploadRes = await fetch('/audio/upload', { method: 'POST', body: formData });
+        const uploadData = await uploadRes.json();
+        document.getElementById('transcript-block').style.display = 'block';
+        document.getElementById('transcript').textContent = uploadData.transcript || uploadData.error || 'No transcript.';
+        // 2. Parsear
+        if (uploadData.transcript) {
+            const parseRes = await fetch('/audio/parse', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ transcript: uploadData.transcript })
+            });
+            const parseData = await parseRes.json();
+            document.getElementById('parse-block').style.display = 'block';
+            document.getElementById('parse-result').textContent = JSON.stringify(parseData, null, 2);
+        } else {
+            document.getElementById('parse-block').style.display = 'none';
+        }
+    };
+    </script>
+</body>
+</html> 

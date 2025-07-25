@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Dashboard - VoiceMenu</title>
+    <link rel="stylesheet" href="/static/kitchen.css">
+</head>
+<body>
+    <div class="header">
+        <h1>🍕 Kitchen Dashboard</h1>
+        <div class="status-indicator">
+            <span class="status-dot active"></span>
+            <span>Live Orders</span>
+        </div>
+    </div>
+    
+    <div class="orders-container">
+        <div class="orders-section">
+            <h2>📋 Pending Orders</h2>
+            <div id="pending-orders" class="orders-grid">
+                <!-- Orders will be loaded here -->
+            </div>
+        </div>
+        
+        <div class="orders-section">
+            <h2>👨‍🍳 Preparing</h2>
+            <div id="preparing-orders" class="orders-grid">
+                <!-- Orders will be loaded here -->
+            </div>
+        </div>
+        
+        <div class="orders-section">
+            <h2>✅ Ready</h2>
+            <div id="ready-orders" class="orders-grid">
+                <!-- Orders will be loaded here -->
+            </div>
+        </div>
+    </div>
+    
+    <script src="/static/kitchen.js"></script>
+</body>
+</html> 
